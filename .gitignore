@@ -5,3 +5,12 @@
 Homestead.json
 Homestead.yaml
 .env
+.vagrant
+..env.swp
+box
+cd
+ssh
+ssh-keygen
+vagrant
+/composer.lock
+/Vagrantfile
