@@ -10,4 +10,14 @@ abstract class Request extends FormRequest {
         return true;
     }
 
+    protected function getValidatorInstance() {
+        $this->_prepare();
+
+        return parent::getValidatorInstance();
+    }
+
+    protected function _prepare() {
+        return;
+    }
+
 }

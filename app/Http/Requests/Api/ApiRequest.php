@@ -9,16 +9,6 @@ use Illuminate\Http\JsonResponse;
 class ApiRequest extends \App\Http\Requests\Request {
 
     public function authorize() {
-        $projectRepository = app(ProjectRepository::class);
-
-        $appKey = $this->get('api_key');
-
-        if (!$appKey) {
-            throw new BadRequestHttpException('api_key is required');
-        }
-
-        $this->project = $projectRepository->getByApiKey($appKey);
-
         if (!$this->project) {
             return false;
         }
@@ -26,7 +16,26 @@ class ApiRequest extends \App\Http\Requests\Request {
         return true;
     }
 
+    protected function _prepare() {
+        $projectRepository = app(ProjectRepository::class);
+
+        $apiKey = $this->get('api_key');
+
+        if (!$apiKey) {
+            throw new BadRequestHttpException('api_key is required');
+        }
+
+        $this->project = $projectRepository->getByApiKey($apiKey);
+    }
+
+    public function rules() {
+        return [
+            'api_key' => 'required'
+        ];
+    }
+
     public function response(array $errors) {
+        \Log::error($errors);
         return new JsonResponse($errors, 422);
     }
 
