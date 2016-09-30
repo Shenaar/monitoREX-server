@@ -4,19 +4,23 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-abstract class Request extends FormRequest {
+abstract class Request extends FormRequest
+{
 
-    public function authorize() {
+    public function authorize() 
+    {
         return true;
     }
 
-    protected function getValidatorInstance() {
-        $this->_prepare();
+    protected function getValidatorInstance() 
+    {
+        $this->prepare();
 
         return parent::getValidatorInstance();
     }
 
-    protected function _prepare() {
+    protected function prepare() 
+    {
         return;
     }
 

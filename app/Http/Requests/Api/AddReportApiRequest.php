@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests\Api;
 
-class AddReportApiRequest extends ApiRequest {
+class AddReportApiRequest extends ApiRequest
+{
 
-    public function rules() {
+    public function rules() 
+    {
         return [
             'content' => 'required'
         ];

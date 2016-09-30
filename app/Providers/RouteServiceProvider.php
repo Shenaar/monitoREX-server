@@ -23,7 +23,6 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define your route model bindings, pattern filters, etc.
      *
-     * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
     public function boot()
@@ -36,7 +35,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define the routes for the application.
      *
-     * @param  \Illuminate\Routing\Router  $router
+     * @param  \Illuminate\Routing\Router $router
      * @return void
      */
     public function map(Router $router)
@@ -51,25 +50,29 @@ class RouteServiceProvider extends ServiceProvider
      *
      * These routes all receive session state, CSRF protection, etc.
      *
-     * @param  \Illuminate\Routing\Router  $router
+     * @param  \Illuminate\Routing\Router $router
      * @return void
      */
     protected function mapWebRoutes(Router $router)
     {
-        $router->group([
+        $router->group(
+            [
             'namespace' => $this->namespaceApi,
             'prefix'     => 'api',
             'middleware' => 'web',
-        ], function ($router) {
-            require base_path('routes/api.php');
-        });
+            ], function ($router) {
+                include base_path('routes/api.php');
+            }
+        );
 
-        $router->group([
+        $router->group(
+            [
             'namespace' => $this->namespaceFrontendApi,
             'prefix'     => 'frontend/api',
             'middleware' => 'web',
-        ], function ($router) {
-            require base_path('routes/frontend_api.php');
-        });
+            ], function ($router) {
+                include base_path('routes/frontend_api.php');
+            }
+        );
     }
 }
