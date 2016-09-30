@@ -35,7 +35,6 @@ class ApiRequest extends \App\Http\Requests\Request {
     }
 
     public function response(array $errors) {
-        \Log::error($errors);
         return new JsonResponse($errors, 422);
     }
 
