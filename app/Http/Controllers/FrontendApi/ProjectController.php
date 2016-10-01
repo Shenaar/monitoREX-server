@@ -5,7 +5,7 @@ namespace App\Http\Controllers\FrontendApi;
 use App\Http\Controllers\Controller;
 use App\Managers\ProjectManager;
 use App\Http\Requests;
-use \Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use App\Models;
 
 class ProjectController extends Controller
 {
@@ -14,26 +14,18 @@ class ProjectController extends Controller
 
     private $_me;
 
-    public function __construct(ProjectManager $projectManager) 
+    public function __construct(ProjectManager $projectManager)
     {
         $this->_projectManager = $projectManager;
         $this->_me = \Auth::user();
     }
 
-    public function getIndex($projectId) 
+    public function getIndex(Models\Project $project)
     {
-        $project = $this->_projectManager
-            ->getProjectRepository()
-            ->getProject($this->_me, $projectId);
-
-        if (!$project) {
-            throw new NotFoundHttpException();
-        }
-
         return $project;
     }
 
-    public function postIndex(Requests\CreateProjectRequest $request) 
+    public function postIndex(Requests\CreateProjectRequest $request)
     {
         $projectData = $request->only(['name']);
 
