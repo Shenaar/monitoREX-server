@@ -14,3 +14,4 @@ ssh-keygen
 vagrant
 /composer.lock
 /Vagrantfile
+/_ide_helper.php
