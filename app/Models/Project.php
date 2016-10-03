@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
 
-    public function reports() 
+    public function reports()
     {
         return $this->hasMany(Report::class);
     }

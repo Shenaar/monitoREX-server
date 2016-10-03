@@ -10,7 +10,7 @@ class ProjectManager
 
     private $_projectRepository;
 
-    public function __construct(ProjectRepository $projectRepository) 
+    public function __construct(ProjectRepository $projectRepository)
     {
         $this->_projectRepository = $projectRepository;
     }
@@ -21,7 +21,7 @@ class ProjectManager
      * @param array            $projectData
      * @return \App\Models\Project
      */
-    public function create(Models\User $owner, array $projectData) 
+    public function create(Models\User $owner, array $projectData)
     {
         $projectData['api_key'] = $this->generateApiKey();
 
@@ -33,7 +33,7 @@ class ProjectManager
      * @param \App\Models\Project $project
      * @return string
      */
-    public function generateApiKey(Models\Project $project = null) 
+    public function generateApiKey(Models\Project $project = null)
     {
         return str_random(32);
     }
@@ -41,7 +41,7 @@ class ProjectManager
     /**
      * @return App\Repositories\ProjectsRepository
      */
-    public function getProjectRepository() 
+    public function getProjectRepository()
     {
         return $this->_projectRepository;
     }

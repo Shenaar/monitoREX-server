@@ -14,7 +14,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function projects() 
+    public function projects()
     {
         return $this->hasMany(Project::class);
     }

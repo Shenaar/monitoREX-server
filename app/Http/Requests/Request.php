@@ -7,19 +7,19 @@ use Illuminate\Foundation\Http\FormRequest;
 abstract class Request extends FormRequest
 {
 
-    public function authorize() 
+    public function authorize()
     {
         return true;
     }
 
-    protected function getValidatorInstance() 
+    protected function getValidatorInstance()
     {
         $this->prepare();
 
         return parent::getValidatorInstance();
     }
 
-    protected function prepare() 
+    protected function prepare()
     {
         return;
     }

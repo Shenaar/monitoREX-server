@@ -13,7 +13,7 @@ class ReportRepository
      * @param array               $reportData
      * @return \App\Models\Report
      */
-    public function create(Models\Project $project, array $reportData) 
+    public function create(Models\Project $project, array $reportData)
     {
         $report = new Models\Report();
         $report->content = $reportData['content'];

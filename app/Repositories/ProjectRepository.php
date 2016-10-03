@@ -13,7 +13,7 @@ class ProjectRepository
      * @param array            $projectData
      * @return \App\Models\Project
      */
-    public function create(Models\User $owner, array $projectData) 
+    public function create(Models\User $owner, array $projectData)
     {
         $project = new Models\Project();
         $project->name = $projectData['name'];
@@ -30,7 +30,7 @@ class ProjectRepository
      * @param int              $projectId
      * @return \App\Models\Project
      */
-    public function getProject(Models\User $owner, $projectId) 
+    public function getProject(Models\User $owner, $projectId)
     {
         return $owner->projects()->find($projectId);
     }
@@ -40,7 +40,7 @@ class ProjectRepository
      * @param type $apiKey
      * @return \App\Models\Project
      */
-    public function getByApiKey($apiKey) 
+    public function getByApiKey($apiKey)
     {
         return Models\Project::where('api_key', $apiKey)->first();
     }

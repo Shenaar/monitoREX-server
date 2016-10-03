@@ -9,7 +9,7 @@ use Illuminate\Http\JsonResponse;
 class ApiRequest extends \App\Http\Requests\Request
 {
 
-    public function authorize() 
+    public function authorize()
     {
         if (!$this->project) {
             return false;
@@ -18,7 +18,7 @@ class ApiRequest extends \App\Http\Requests\Request
         return true;
     }
 
-    protected function prepare() 
+    protected function prepare()
     {
         $projectRepository = app(ProjectRepository::class);
 
@@ -31,14 +31,14 @@ class ApiRequest extends \App\Http\Requests\Request
         $this->project = $projectRepository->getByApiKey($apiKey);
     }
 
-    public function rules() 
+    public function rules()
     {
         return [
             'api_key' => 'required'
         ];
     }
 
-    public function response(array $errors) 
+    public function response(array $errors)
     {
         return new JsonResponse($errors, 422);
     }
