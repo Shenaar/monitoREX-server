@@ -23,6 +23,8 @@ class ApiReportTest extends TestCase
 
     public function testAddReport()
     {
+        DB::beginTransaction();
+
         $response = $this->call(
             'POST', '/api/report', [
                 'api_key' => $this->_getProject()->api_key,
@@ -31,6 +33,8 @@ class ApiReportTest extends TestCase
         );
 
         $this->assertEquals(200, $response->getStatusCode());
+
+        DB::rollBack();
     }
 
     private function _getProject()
