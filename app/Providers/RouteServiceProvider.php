@@ -20,6 +20,8 @@ class RouteServiceProvider extends ServiceProvider
 
     protected $namespaceFrontendApi = 'App\Http\Controllers\FrontendApi';
 
+    protected $namespaceFrontend = 'App\Http\Controllers\Frontend';
+
     /**
      * Define your route model bindings, pattern filters, etc.
      *
@@ -38,9 +40,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map(Router $router)
     {
+        $this->mapModels($router);
         $this->mapWebRoutes($router);
-
-        //
     }
 
     /**
@@ -72,5 +73,23 @@ class RouteServiceProvider extends ServiceProvider
                 include base_path('routes/frontend_api.php');
             }
         );
+
+        $router->group(
+            [
+            'namespace' => $this->namespaceFrontend,
+            'prefix'     => '',
+            'middleware' => 'web',
+            ], function ($router) {
+                include base_path('routes/frontend.php');
+            }
+        );
+    }
+    /**
+     *
+     * @param Router $router
+     */
+    private function mapModels(Router $router)
+    {
+        $router->model('project', \App\Models\Project::class);
     }
 }
