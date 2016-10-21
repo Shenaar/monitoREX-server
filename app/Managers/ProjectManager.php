@@ -21,7 +21,7 @@ class ProjectManager
      * @param array            $projectData
      * @return \App\Models\Project
      */
-    public function create(Models\User $owner, array $projectData)
+    public function createProject(Models\User $owner, array $projectData)
     {
         $projectData['api_key'] = $this->generateApiKey();
 

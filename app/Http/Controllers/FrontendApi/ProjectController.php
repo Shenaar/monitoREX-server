@@ -29,9 +29,19 @@ class ProjectController extends Controller
     {
         $projectData = $request->only(['name']);
 
-        $project = $this->_projectManager->create($this->_me, $projectData);
+        $project = $this->_projectManager
+            ->createProject($this->_me, $projectData);
 
         return $project;
+    }
+
+    public function getList()
+    {
+        $projects = $this->_projectManager
+            ->getProjectRepository()
+            ->getProjectsByOwner($this->_me);
+
+        return $projects;
     }
 
 }

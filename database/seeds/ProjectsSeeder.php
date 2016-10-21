@@ -12,7 +12,7 @@ class ProjectsSeeder extends Seeder {
     public function run() {
         $user = \App\Models\User::find(1);
         $projectManager = app(\App\Managers\ProjectManager::class);
-        $project = $projectManager->create($user, ['name' => 'Seeded project']);
+        $projectManager->createProject($user, ['name' => 'Seeded project']);
     }
 
 }

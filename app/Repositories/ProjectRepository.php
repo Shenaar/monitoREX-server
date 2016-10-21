@@ -30,7 +30,7 @@ class ProjectRepository
      * @param int              $projectId
      * @return \App\Models\Project
      */
-    public function getProject(Models\User $owner, $projectId)
+    public function get(Models\User $owner, $projectId)
     {
         return $owner->projects()->find($projectId);
     }
@@ -43,6 +43,15 @@ class ProjectRepository
     public function getByApiKey($apiKey)
     {
         return Models\Project::where('api_key', $apiKey)->first();
+    }
+
+    /**
+     *
+     * @param \App\Models\User $owner
+     */
+    public function getProjectsByOwner(Models\User $owner)
+    {
+        return $owner->projects;
     }
 
 }
