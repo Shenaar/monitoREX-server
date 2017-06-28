@@ -4,6 +4,7 @@ namespace App\Managers;
 
 use App\Repositories\ReportRepository;
 use App\Models;
+use App\Services\Reporter\Reporter;
 
 class ReportManager
 {
@@ -24,9 +25,11 @@ class ReportManager
      */
     public function addReport(Models\Project $project, array $reportData)
     {
+        /* @var Reporter */
+        $reporter = app(Reporter::class);
         $reportData['status'] = \App\Enums\ReportStatuses::NEW_ONE;
 
-        return $this->getReportRepository()->create($project, $reportData);
+        return $reporter->createReport($project, $reportData);
     }
 
     /**
