@@ -36,20 +36,50 @@ class ApiReportTest extends TestCase
 
         $project = $this->getProject();
 
+        $ex = [
+            'class' => 'Illuminate\Database\Eloquent\ModelNotFoundException',
+            'file' => '/home/vagrant/monitorex-server/vendor/laravel/framework/src/Illuminate/Routing/Router.php',
+            'line' => 963,
+            'message' => 'No query results for model [App\Models\Project].',
+            'trace' => 'trace'
+        ];
+
         $response = $this->call(
-            'POST', '/api/report', [
-                'api_key' => $project->api_key,
-                'content' => 'Test error'
-            ]
+            'POST', '/api/report', array_merge($ex, [
+                'api_key' => $project->api_key
+            ])
         );
 
         $this->assertEquals(200, $response->getStatusCode());
 
-        $this->assertArraySubset([
-            'content'    => 'Test error',
-            'project_id' => $project->id,
-            'status'     => \App\Enums\ReportStatuses::NEW_ONE
-        ], json_decode($response->getContent(), true));
+        $this->assertArraySubset($ex, json_decode($response->getContent(), true));
+
+        DB::rollBack();
+    }
+
+
+    public function testAddReportNoTrace()
+    {
+        DB::beginTransaction();
+
+        $project = $this->getProject();
+
+        $ex = [
+            'class' => 'Illuminate\Database\Eloquent\ModelNotFoundException',
+            'file' => '/home/vagrant/monitorex-server/vendor/laravel/framework/src/Illuminate/Routing/Router.php',
+            'line' => 963,
+            'message' => 'No query results for model [App\Models\Project].'
+        ];
+
+        $response = $this->call(
+            'POST', '/api/report', array_merge($ex, [
+                'api_key' => $project->api_key
+            ])
+        );
+
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $this->assertArraySubset($ex, json_decode($response->getContent(), true));
 
         DB::rollBack();
     }

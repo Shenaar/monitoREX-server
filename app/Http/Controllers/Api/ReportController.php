@@ -17,7 +17,10 @@ class ReportController extends Controller
 
     public function postIndex(AddReportApiRequest $request)
     {
-        $reportData = $request->only(['content']);
+
+        $reportData = $request->only([
+            'class', 'file', 'line', 'message', 'trace'
+        ]);
 
         $report = $this->reportManager
             ->addReport($request->project, $reportData);

@@ -25,7 +25,12 @@ class ReportRepository extends AbstractRepository
     public function create(Models\Project $project, array $reportData)
     {
         $report = new Models\Report();
-        $report->content = $reportData['content'];
+        $report->class = $reportData['class'];
+        $report->file = $reportData['file'];
+        $report->line = $reportData['line'];
+        $report->message = $reportData['message'];
+        $report->trace = $reportData['trace'];
+
         $report->status  = $reportData['status'];
 
         $project->reports()->save($report);

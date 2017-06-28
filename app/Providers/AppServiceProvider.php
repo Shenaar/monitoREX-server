@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(\App\Services\Reporter\Reporter::class, function() {
+        $this->app->bind(\App\Services\Reporter\Reporter::class, function () {
             return app(\App\Services\Reporter\SimpleReporter::class);
         });
     }

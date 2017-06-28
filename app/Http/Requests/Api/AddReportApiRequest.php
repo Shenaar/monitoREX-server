@@ -8,7 +8,10 @@ class AddReportApiRequest extends ApiRequest
     public function rules()
     {
         return [
-            'content' => 'required'
+            'class'   => 'required',
+            'file'    => 'required',
+            'line'    => 'required|numeric',
+            'message' => 'required'
         ];
     }
 

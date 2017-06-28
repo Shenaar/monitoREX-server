@@ -13,7 +13,10 @@ abstract class Reporter
      */
     protected $reportRepository;
 
-    function __construct(ReportRepository $reportRepository)
+    /**
+     * @param ReportRepository $reportRepository
+     */
+    public function __construct(ReportRepository $reportRepository)
     {
         $this->reportRepository = $reportRepository;
     }
