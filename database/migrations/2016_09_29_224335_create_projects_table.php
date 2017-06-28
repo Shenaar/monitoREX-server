@@ -18,7 +18,7 @@ class CreateProjectsTable extends Migration {
 
             $table->string('name');
 
-            $table->string('api_key');
+            $table->string('api_key')->index();
 
             $table->timestamps();
             $table->softDeletes();

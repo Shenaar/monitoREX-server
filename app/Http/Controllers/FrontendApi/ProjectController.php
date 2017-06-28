@@ -10,14 +10,14 @@ use App\Models;
 class ProjectController extends Controller
 {
 
-    private $_projectManager;
+    private $projectManager;
 
-    private $_me;
+    private $me;
 
     public function __construct(ProjectManager $projectManager)
     {
-        $this->_projectManager = $projectManager;
-        $this->_me = \Auth::user();
+        $this->projectManager = $projectManager;
+        $this->me = \Auth::user();
     }
 
     public function getIndex(Models\Project $project)
@@ -29,17 +29,17 @@ class ProjectController extends Controller
     {
         $projectData = $request->only(['name']);
 
-        $project = $this->_projectManager
-            ->createProject($this->_me, $projectData);
+        $project = $this->projectManager
+            ->createProject($this->me, $projectData);
 
         return $project;
     }
 
     public function getList()
     {
-        $projects = $this->_projectManager
+        $projects = $this->projectManager
             ->getProjectRepository()
-            ->getProjectsByOwner($this->_me);
+            ->getProjectsByOwner($this->me);
 
         return $projects;
     }

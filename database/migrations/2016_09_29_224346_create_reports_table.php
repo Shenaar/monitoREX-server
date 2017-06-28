@@ -3,6 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+use App\Enums\ReportStatuses;
+
 class CreateReportsTable extends Migration
 {
     /**
@@ -17,6 +19,10 @@ class CreateReportsTable extends Migration
 
             $table->integer('project_id')->unsigned()->index();
             $table->text('content');
+
+            $table->enum('status', ReportStatuses::getAll())
+                ->default(ReportStatuses::NEW_ONE)
+                ->index();
 
             $table->timestamps();
         });

@@ -19,7 +19,10 @@ class ApiProjectTest extends TestCase
 
     private function getProject()
     {
-        return \App\Models\Project::first();
+        $project = \App\Models\Project::first();
+        $this->assertNotNull($project);
+
+        return $project;
     }
 
 }

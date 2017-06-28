@@ -3,8 +3,11 @@
 namespace App\Http\Requests\Api;
 
 use App\Repositories\ProjectRepository;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+
 use Illuminate\Http\JsonResponse;
+
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class ApiRequest extends \App\Http\Requests\Request
 {
@@ -40,7 +43,7 @@ class ApiRequest extends \App\Http\Requests\Request
 
     public function response(array $errors)
     {
-        return new JsonResponse($errors, 422);
+        return new JsonResponse($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
 }

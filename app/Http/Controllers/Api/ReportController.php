@@ -8,21 +8,21 @@ use App\Http\Requests\Api\AddReportApiRequest;
 class ReportController extends Controller
 {
 
-    private $_reportManager;
+    private $reportManager;
 
     public function __construct(\App\Managers\ReportManager $reportManager)
     {
-        $this->_reportManager = $reportManager;
+        $this->reportManager = $reportManager;
     }
 
     public function postIndex(AddReportApiRequest $request)
     {
         $reportData = $request->only(['content']);
 
-        $report = $this->_reportManager
+        $report = $this->reportManager
             ->addReport($request->project, $reportData);
 
-        return response($report, 200);
+        return $report;
     }
 
 }

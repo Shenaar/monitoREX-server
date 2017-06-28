@@ -19,6 +19,7 @@ class ProjectRepository extends AbstractRepository
      *
      * @param \App\Models\User $owner
      * @param array            $projectData
+     *
      * @return \App\Models\Project
      */
     public function create(Models\User $owner, array $projectData)
@@ -36,6 +37,7 @@ class ProjectRepository extends AbstractRepository
      *
      * @param \App\Models\User $owner
      * @param int              $projectId
+     *
      * @return \App\Models\Project
      */
     public function get(Models\User $owner, $projectId)
@@ -46,6 +48,7 @@ class ProjectRepository extends AbstractRepository
     /**
      *
      * @param type $apiKey
+     *
      * @return \App\Models\Project
      */
     public function getByApiKey($apiKey)
