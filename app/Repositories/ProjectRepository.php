@@ -4,8 +4,16 @@ namespace App\Repositories;
 
 use App\Models;
 
-class ProjectRepository
+class ProjectRepository extends AbstractRepository
 {
+
+    /**
+     *
+     */
+    public function __construct()
+    {
+        parent::__construct(new Models\Project());
+    }
 
     /**
      *

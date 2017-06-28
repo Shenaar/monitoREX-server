@@ -4,8 +4,16 @@ namespace App\Repositories;
 
 use App\Models;
 
-class ReportRepository
+class ReportRepository extends AbstractRepository
 {
+
+    /**
+     *
+     */
+    public function __construct()
+    {
+        parent::__construct(new Models\Report());
+    }
 
     /**
      *

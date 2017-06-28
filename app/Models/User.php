@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
 
-class User extends Authenticatable
+class User extends AbstractModel implements Authenticatable
 {
+
+    use AuthenticatableTrait;
 
     protected $fillable = [
         'name', 'email', 'password',
