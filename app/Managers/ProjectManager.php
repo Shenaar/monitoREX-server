@@ -41,7 +41,7 @@ class ProjectManager
     }
 
     /**
-     * @return App\Repositories\ProjectsRepository
+     * @return \App\Repositories\ProjectRepository
      */
     public function getProjectRepository()
     {

@@ -26,14 +26,14 @@ class ReportManager
     public function addReport(Models\Project $project, array $reportData)
     {
         /* @var Reporter */
-        $reporter = app(Reporter::class);
+        $reporter = app(Reporter::class, [$this->getReportRepository()]);
         $reportData['status'] = \App\Enums\ReportStatuses::NEW_ONE;
 
         return $reporter->createReport($project, $reportData);
     }
 
     /**
-     * @return App\Repositories\ReportRepository
+     * @return \App\Repositories\ReportRepository
      */
     public function getReportRepository()
     {
