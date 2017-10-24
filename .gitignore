@@ -3,7 +3,6 @@
 /vendor
 /.idea
 Homestead.json
-Homestead.yaml
 .env
 .vagrant
 ..env.swp
@@ -13,6 +12,5 @@ ssh
 ssh-keygen
 vagrant
 /composer.lock
-/Vagrantfile
 /_ide_helper.php
 /coverage/
