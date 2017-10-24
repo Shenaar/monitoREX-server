@@ -15,5 +15,5 @@ sites:
         to: /home/vagrant/code
 databases:
     - homestead
-name: monitorex-server-jenkins
+name: monitorex-server-jenkins-new
 hostname: monitorex-server
