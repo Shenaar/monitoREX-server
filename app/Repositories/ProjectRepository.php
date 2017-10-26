@@ -47,7 +47,7 @@ class ProjectRepository extends AbstractRepository
 
     /**
      *
-     * @param type $apiKey
+     * @param string $apiKey
      *
      * @return \App\Models\Project
      */
@@ -57,8 +57,9 @@ class ProjectRepository extends AbstractRepository
     }
 
     /**
-     *
      * @param \App\Models\User $owner
+     *
+     * @return Models\Project[]
      */
     public function getProjectsByOwner(Models\User $owner)
     {

@@ -27,7 +27,7 @@ class ApiReportTest extends TestCase
             ]
         );
 
-        $this->assertEquals(422, $response->getStatusCode());
+        $this->assertEquals(422, $response->getStatusCode(), $response->getContent());
     }
 
     public function testAddReport()

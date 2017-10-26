@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Project;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -90,6 +91,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     private function mapModels(Router $router)
     {
-        $router->model('project', \App\Models\Project::class);
+        $router->model('project', Project::class);
     }
 }

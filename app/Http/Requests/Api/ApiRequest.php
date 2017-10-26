@@ -2,14 +2,20 @@
 
 namespace App\Http\Requests\Api;
 
+use App\Http\Requests\Request;
+use App\Models\Project;
 use App\Repositories\ProjectRepository;
 
-use Illuminate\Http\JsonResponse;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
-class ApiRequest extends \App\Http\Requests\Request
+/**
+ * @property Project $project
+ */
+class ApiRequest extends Request
 {
 
     public function authorize()
@@ -41,9 +47,8 @@ class ApiRequest extends \App\Http\Requests\Request
         ];
     }
 
-    public function response(array $errors)
+    protected function failedValidation(Validator $validator)
     {
-        return new JsonResponse($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
+        throw new HttpResponseException(response()->json($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
     }
-
 }

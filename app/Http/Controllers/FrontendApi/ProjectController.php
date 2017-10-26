@@ -12,6 +12,9 @@ class ProjectController extends Controller
 
     private $projectManager;
 
+    /**
+     * @var \App\Models\User|null
+     */
     private $me;
 
     public function __construct(ProjectManager $projectManager)
