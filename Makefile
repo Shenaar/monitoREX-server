@@ -4,6 +4,9 @@ setup:
 	php -r "file_exists('.env') || copy('.env.example', '.env');"
 	php artisan key:generate
 	mysql -e 'CREATE DATABASE IF NOT EXISTS `monitorex`'
+	mysql -e 'CREATE USER IF NOT EXISTS "homestead"@"localhost" IDENTIFIED BY "secret";'
+	mysql -e 'CREATE USER IF NOT EXISTS "homestead"@"localhost" IDENTIFIED BY "secret";'
+	mysql -e 'GRANT ALL ON monitorex TO "homestead"@"localhost";'
 
 test:
 	make setup
