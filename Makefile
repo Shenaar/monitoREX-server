@@ -7,6 +7,8 @@ setup:
 
 test:
 	make setup
-	php artisan migrate:refresh --seed
 	php artisan cache:clear
+	php artisan route:cache
+	php artisan config:cache
+	php artisan migrate:refresh --seed
 	phpunit --debug
