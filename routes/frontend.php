@@ -2,6 +2,6 @@
 
 // /
 
-Route::any('{other}', function() {
+/*Route::any('{other}', function() {
     return 'It works!';
-})->where('other', '.*');
+})->where('other', '.*');*/
