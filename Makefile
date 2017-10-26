@@ -14,5 +14,5 @@ test:
 	php artisan route:cache
 	php artisan config:cache
 	php artisan migrate:refresh --seed
-	./vendor/bin/phpunit --debug
+	./vendor/bin/phpunit --debug --coverage-html phpunit-coverage
 	./vendor/bin/phpcs --standard=ruleset.xml -p
